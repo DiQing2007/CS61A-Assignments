@@ -15,7 +15,7 @@ def print_if(s, f):
     """
     for x in s:
         "*** YOUR CODE HERE ***"
-
+    #qwe
 
 def close(s, k):
     """Return how many elements of s that are within k of their index.
