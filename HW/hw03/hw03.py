@@ -25,6 +25,16 @@ def num_eights(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n // 10 == 0:
+        if n % 10 == 8:
+            return 1
+        else:
+            return 0
+    else:
+        if n % 10 == 8:
+            return 1 + num_eights(n // 10)
+        else:
+            return 0 + num_eights(n // 10)
 
 
 def digit_distance(n):
@@ -47,6 +57,11 @@ def digit_distance(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    remain, last = n // 10, n % 10
+    if remain == 0:
+        return 0
+    else:
+        return abs(remain % 10 - last) + digit_distance(remain)
 
 
 def interleaved_sum(n, odd_func, even_func):
@@ -71,6 +86,21 @@ def interleaved_sum(n, odd_func, even_func):
     True
     """
     "*** YOUR CODE HERE ***"
+    count = 0
+
+    def helper(num):
+        if num > n:
+            return 0
+        else:
+            return help2(num + 1) + odd_func(num)
+
+    def help2(num):
+        if num > n:
+            return 0
+        else:
+            return helper(num + 1) + even_func(num)
+
+    return helper(1)
 
 
 def next_smaller_dollar(bill):
@@ -85,6 +115,7 @@ def next_smaller_dollar(bill):
         return 5
     elif bill == 5:
         return 1
+
 
 def count_dollars(total):
     """Return the number of ways to make change.
@@ -108,6 +139,19 @@ def count_dollars(total):
     """
     "*** YOUR CODE HERE ***"
 
+    def usemoney(num, max_use):
+        if num == 0:
+            return 1
+        if num < 0:
+            return 0
+        if max_use == None:
+            return 0
+        return usemoney(num - max_use, max_use) + usemoney(
+            num, next_smaller_dollar(max_use)
+        )
+
+    return usemoney(total, 100)
+
 
 def next_larger_dollar(bill):
     """Returns the next larger bill in order."""
@@ -121,6 +165,7 @@ def next_larger_dollar(bill):
         return 50
     elif bill == 50:
         return 100
+
 
 def count_dollars_upward(total):
     """Return the number of ways to make change using bills.
@@ -144,10 +189,24 @@ def count_dollars_upward(total):
     """
     "*** YOUR CODE HERE ***"
 
+    def usemoney(num, max_use):
+        if num == 0:
+            return 1
+        if num < 0:
+            return 0
+        if max_use == None:
+            return 0
+        return usemoney(num - max_use, max_use) + usemoney(
+            num, next_larger_dollar(max_use)
+        )
+
+    return usemoney(total, 1)
+
 
 def print_move(origin, destination):
     """Print instructions to move a disk."""
     print("Move the top disk from rod", origin, "to rod", destination)
+
 
 def move_stack(n, start, end):
     """Print the moves required to move n disks on the start pole to the end
@@ -182,6 +241,7 @@ def move_stack(n, start, end):
 
 from operator import sub, mul
 
+
 def make_anonymous_factorial():
     """Return the value of an expression that computes factorial.
 
@@ -193,5 +253,4 @@ def make_anonymous_factorial():
     ...     ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
-
+    return "YOUR_EXPRESSION_HERE"
