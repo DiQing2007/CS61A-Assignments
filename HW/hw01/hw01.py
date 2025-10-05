@@ -22,8 +22,6 @@ def a_plus_abs_b(a, b):
 
 def a_plus_abs_b_syntax_check():
     """Check that you didn't change the return statement of a_plus_abs_b.
-
-
     >>> # You aren't expected to understand the code of this test.
     >>> import inspect, re
     >>> re.findall(r'^\s*(return .*)', inspect.getsource(a_plus_abs_b), re.M)
