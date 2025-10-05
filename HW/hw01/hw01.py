@@ -22,14 +22,14 @@ def a_plus_abs_b(a, b):
 
 def a_plus_abs_b_syntax_check():
     """Check that you didn't change the return statement of a_plus_abs_b.
-<<<<<<< HEAD
-=======
+    <<<<<<< HEAD
+    =======
 
->>>>>>> 0dc326f (archtest)
-    >>> # You aren't expected to understand the code of this test.
-    >>> import inspect, re
-    >>> re.findall(r'^\s*(return .*)', inspect.getsource(a_plus_abs_b), re.M)
-    ['return f(a, b)']
+
+        >>> # You aren't expected to understand the code of this test.
+        >>> import inspect, re
+        >>> re.findall(r'^\s*(return .*)', inspect.getsource(a_plus_abs_b), re.M)
+        ['return f(a, b)']
     """
     # You don't need to edit this function. It's just here to check your work.
 
